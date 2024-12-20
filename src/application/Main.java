@@ -5,25 +5,24 @@ import db.DbException;
 import db.DbIntegrityException;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.dao.implementation.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
-        Connection connection = DB.getConnection();
-
-        Department department = new Department(1, "Books");
-
-        Seller seller = new Seller(21, "Bob", "bob@gmail.com",
-                LocalDateTime.now(), 3000.0, department
-        );
-
         SellerDao sellerDao = DaoFactory.createSellerDao();
+
+        Seller seller = sellerDao.findById(3);
+        System.out.println(seller);
 
         DB.closeConnection();
 
