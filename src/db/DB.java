@@ -39,6 +39,8 @@ public class DB {
             } catch (SQLException e) {
                 throw new DbException(e.getMessage());
             }
+
+            System.out.println("\nConnection closed");
         }
     }
 
