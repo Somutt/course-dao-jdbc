@@ -3,6 +3,8 @@ package application;
 import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -16,11 +18,11 @@ public class Main {
         Connection connection = DB.getConnection();
 
         Department department = new Department(1, "Books");
-        System.out.println(department);
 
         Seller seller = new Seller(21, "Bob", "bob@gmail.com",
                 LocalDateTime.now(), 3000.0, department);
-        System.out.println(seller);
+
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
         DB.closeConnection();
 
