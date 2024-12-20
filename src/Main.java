@@ -8,16 +8,17 @@ import java.text.SimpleDateFormat;
 
 public class Main {
     public static void main(String[] args) {
-        /*
         Connection connection = DB.getConnection();
 
         DB.closeConnection();
-        */
-        //demo1();
-        //demo2();
-        //demo3();
-        //demo4();
+
+        /*
+        demo1();
+        demo2();
+        demo3();
+        demo4();
         demo5();
+         */
     }
 
     public static void demo1() {
