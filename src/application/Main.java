@@ -20,7 +20,8 @@ public class Main {
         Department department = new Department(1, "Books");
 
         Seller seller = new Seller(21, "Bob", "bob@gmail.com",
-                LocalDateTime.now(), 3000.0, department);
+                LocalDateTime.now(), 3000.0, department
+        );
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
