@@ -16,13 +16,25 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
+        System.out.println("TEST 1 => FIND BY ID");
         Seller seller = sellerDao.findById(3);
         System.out.println(seller);
+        System.out.println();
+
+        System.out.println("TEST 2 => FIND BY DEPARTMENT");
+        Department department = new Department(2, null);
+        List<Seller> sellers = sellerDao.findByDepartment(department);
+
+        for (Seller s : sellers) {
+            System.out.println(s);
+            System.out.println();
+        }
 
         DB.closeConnection();
 
