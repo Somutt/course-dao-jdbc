@@ -4,8 +4,8 @@ import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
-import model.dao.implementation.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -21,6 +21,21 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        //testSellerDao();
+        testDepartmentDao();
+
+        DB.closeConnection();
+
+        /*
+        demo1();
+        demo2();
+        demo3();
+        demo4();
+        demo5();
+         */
+    }
+
+    public static void testSellerDao() {
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
         System.out.println("TEST 1 => FIND BY ID");
@@ -57,18 +72,21 @@ public class Main {
         sellerDao.update(seller);
         */
 
+        /*
         System.out.println("TEST 6 => SELLER DELETE BY ID");
         sellerDao.delete(9);
+        */
+    }
 
-        DB.closeConnection();
+    public static void testDepartmentDao() {
+        DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
         /*
-        demo1();
-        demo2();
-        demo3();
-        demo4();
-        demo5();
-         */
+        System.out.println("TEST 9 => DEPARTMENT INSERT");
+        Department departmentInsert = new Department(null, "Music");
+        departmentDao.insert(departmentInsert);
+        System.out.println("Inserted successfully, generated id: " + departmentInsert.getId());
+        */
     }
 
     public static void demo1() {
@@ -209,5 +227,4 @@ public class Main {
             DB.closeConnection();
         }
     }
-
 }
