@@ -50,10 +50,15 @@ public class Main {
         System.out.println("Inserted successfully, generated id: " + sellerInsert.getId());
         */
 
+        /*
         System.out.println("TEST 5 => SELLER UPDATE");
         seller = sellerDao.findById(1);
         seller.setName("Martha Marge");
         sellerDao.update(seller);
+        */
+
+        System.out.println("TEST 6 => SELLER DELETE BY ID");
+        sellerDao.delete(9);
 
         DB.closeConnection();
 
