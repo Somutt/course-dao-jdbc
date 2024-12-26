@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -30,11 +31,22 @@ public class Main {
         System.out.println("TEST 2 => FIND BY DEPARTMENT");
         Department department = new Department(2, null);
         List<Seller> sellers = sellerDao.findByDepartment(department);
-
         for (Seller s : sellers) {
             System.out.println(s);
             System.out.println();
         }
+
+        System.out.println("TEST 3 => FIND ALL");
+        sellers = sellerDao.findAll();
+        for (Seller s : sellers) {
+            System.out.println(s);
+            System.out.println();
+        }
+
+        System.out.println("TEST 4 => SELLER INSERT");
+        Seller sellerInsert = new Seller(null, "Greg Cyan", "greg@gmail.com", new Date(), 4000.0, department);
+        sellerDao.insert(sellerInsert);
+        System.out.println("Inserted successfully, generated id: " + sellerInsert.getId());
 
         DB.closeConnection();
 
