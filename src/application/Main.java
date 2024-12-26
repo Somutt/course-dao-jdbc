@@ -43,10 +43,17 @@ public class Main {
             System.out.println();
         }
 
+        /*
         System.out.println("TEST 4 => SELLER INSERT");
         Seller sellerInsert = new Seller(null, "Greg Cyan", "greg@gmail.com", new Date(), 4000.0, department);
         sellerDao.insert(sellerInsert);
         System.out.println("Inserted successfully, generated id: " + sellerInsert.getId());
+        */
+
+        System.out.println("TEST 5 => SELLER UPDATE");
+        seller = sellerDao.findById(1);
+        seller.setName("Martha Marge");
+        sellerDao.update(seller);
 
         DB.closeConnection();
 
