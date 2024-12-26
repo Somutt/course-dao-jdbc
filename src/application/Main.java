@@ -81,12 +81,22 @@ public class Main {
     public static void testDepartmentDao() {
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
+        System.out.println("TEST 7 => DEPARTMENT FIND BY ID");
+        Department department = departmentDao.findById(2);
+        System.out.println(department);
+        System.out.println();
+
         /*
         System.out.println("TEST 9 => DEPARTMENT INSERT");
         Department departmentInsert = new Department(null, "Music");
         departmentDao.insert(departmentInsert);
         System.out.println("Inserted successfully, generated id: " + departmentInsert.getId());
         */
+
+        System.out.println("TEST 10 => DEPARTMENT UPDATE");
+        department = departmentDao.findById(9);
+        department.setName("Games");
+        departmentDao.update(department);
     }
 
     public static void demo1() {

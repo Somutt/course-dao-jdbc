@@ -44,15 +44,63 @@ public class DepartmentDaoJDBC implements DepartmentDao {
         }
     }
 
-    public void update(Department department) {}
+    public void update(Department department) {
+        PreparedStatement statement = null;
+
+        try {
+            statement = connection.prepareStatement("UPDATE department "
+                    + "SET name = ? "
+                    + "WHERE id = ?",
+                    Statement.RETURN_GENERATED_KEYS
+            );
+            statement.setString(1, department.getName());
+            statement.setInt(2, department.getId());
+
+            int rowsAffected = statement.executeUpdate();
+            System.out.println("Updated successfully, " + rowsAffected + " rows affected");
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(statement);
+        }
+    }
 
     public void delete(Integer id) {}
 
     public Department findById(Integer id) {
-        return null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            statement = connection.prepareStatement("SELECT department.* "
+                + "FROM department "
+                + "WHERE department.id = ?",
+                Statement.RETURN_GENERATED_KEYS
+            );
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return instantiateDepartment(resultSet);
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(statement);
+            DB.closeResultSet(resultSet);
+        }
     }
 
     public List<Department> findAll() {
         return List.of();
+    }
+
+    private Department instantiateDepartment(ResultSet rs) throws SQLException {
+        Department department = new Department();
+        department.setId(rs.getInt("id"));
+        department.setName(rs.getString("name"));
+
+        return department;
     }
 }
