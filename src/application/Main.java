@@ -86,6 +86,8 @@ public class Main {
         System.out.println(department);
         System.out.println();
 
+
+
         /*
         System.out.println("TEST 9 => DEPARTMENT INSERT");
         Department departmentInsert = new Department(null, "Music");
@@ -93,10 +95,17 @@ public class Main {
         System.out.println("Inserted successfully, generated id: " + departmentInsert.getId());
         */
 
+        /*
         System.out.println("TEST 10 => DEPARTMENT UPDATE");
         department = departmentDao.findById(9);
         department.setName("Games");
         departmentDao.update(department);
+        */
+
+        /*
+        System.out.println("TEST 11 => DEPARTMENT DELETE");
+        departmentDao.delete(9);
+        */
     }
 
     public static void demo1() {
