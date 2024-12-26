@@ -86,7 +86,12 @@ public class Main {
         System.out.println(department);
         System.out.println();
 
-
+        System.out.println("TEST 8 => DEPARTMENT FIND ALL");
+        List<Department> departments = departmentDao.findAll();
+        for (Department d : departments) {
+            System.out.println(d);
+            System.out.println();
+        }
 
         /*
         System.out.println("TEST 9 => DEPARTMENT INSERT");
